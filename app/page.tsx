@@ -67,7 +67,7 @@ export default function Home() {
       <div className="aurora" aria-hidden="true" />
       <section className="sky" style={{ transform: `translate3d(${motion.x}px, ${motion.y}px, 0)` }} aria-label="Interactive sky map">
         <div className="horizon" />
-        {constellationLines.map((line, i) => <i key={i} className="constellation-line" style={{ left: `${line[0]}%`, top: `${line[1]}%`, width: `${Math.hypot(line[2]-line[0],line[3]-line[1])}%`, transform: `rotate(${Math.atan2(line[3]-line[1],line[2]-line[0]) * 180 / Math.PI}deg)` }} />)}
+        {constellationLines.map((line, i) => <i key={i} className="constellation-line" style={{ left: `${line[0]}%`, top: `${line[1]}%`, width: `${Math.hypot(line[2]-line[0],line[3]-line[1]).toFixed(3)}%`, transform: `rotate(${(Math.atan2(line[3]-line[1],line[2]-line[0]) * 180 / Math.PI).toFixed(3)}deg)` }} />)}
         {objects.map(object => (
           <button key={object.name} className={`celestial ${selected.name === object.name ? "active" : ""}`} style={{ left: `${object.x}%`, top: `${object.y}%`, "--object-color": object.color, "--object-size": `${object.size}px` } as React.CSSProperties} onClick={() => setSelected(object)} aria-label={`Select ${object.name}`}>
             <span className="orb" /><span className="object-label">{object.name}</span>
